@@ -1,0 +1,60 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+#CEliLe{
+	padding: 2%;
+	box-sizing: border-box;
+
+}
+
+
+#CajaMensaje{
+	width: 50%;
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	background-color: #C6F1F7;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+#CajaMensaje h1{
+	background-color: #F7BBBB;
+	color: #D41E1E;
+	padding: 3%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+#CajaMensaje p{
+	padding: 4%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+#CajaMensaje div{
+	padding: 3%;
+	background-color: #D4D4D4;
+	text-align: center;
+}
+
+
+#CajaMensaje button{
+	width: 40%;
+	border: none;
+	background-color: #1589D3;
+	color: #fff;
+	padding: 10px;
+	margin: 0% 4%;
+	border-radius: 5px;
+}
+
+#CajaMensaje button:hover{
+	background-color: #0869C4;
+	text-decoration: underline;
+	cursor: pointer;
+
+}

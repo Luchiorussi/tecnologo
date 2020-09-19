@@ -1,0 +1,93 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: #000;
+}
+
+#ContenidoLDL{
+
+	width: 100%;
+	padding: 2%;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+}
+
+
+
+#tablaLDL h1{
+	text-align: center;
+	background-color: #0C89AD;
+	color: #fff;
+	padding: 4px;
+	box-sizing: border-box;
+}
+
+#busqueda {
+	/*border: 1px solid red;*/
+	
+
+
+	padding: 1%;
+	box-sizing: border-box;
+	background-color: #C6F1F7;
+
+	text-align: right;
+
+}
+
+#ImprimirLDL{
+	
+
+}
+
+/*#BusquedaLR{
+	
+	float: right;
+	display: block;
+}*/
+
+#BusquedaLDL input{
+	padding: 7px;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+#BusquedaLDL > button, #ImprimirLDL > button{
+	/*border: 1px solid red;*/
+	
+	border-radius: 5px;
+	border:none;
+
+	padding: 10px;
+	box-sizing: border-box;
+	background: #0067D0;
+	color: #fff;
+	
+
+}
+#BusquedaLDL > button:hover, #ImprimirLDL > button:hover{
+	/*border: 1px solid red;*/
+	
+	
+	background: #0067D0;
+	text-decoration: underline;
+	cursor: pointer;
+
+}
+
+#ListaLDL{
+
+	width: 100%;
+	max-height: 500px;
+	overflow: auto;
+
+
+	margin-top: 2%;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+
+

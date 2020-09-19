@@ -1,0 +1,27 @@
+table{
+	color: #fff;
+	width: 100%;
+	border: 1px solid #fff;
+}
+table tr{
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+table td{
+	border: 1px solid #fff;
+	text-align: center;
+}			
+
+table td a{
+	margin: 4px;
+	display: block;
+	background: #1B7A38;
+	padding: 5px;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+table td a:hover{
+	text-decoration: underline;
+}

@@ -1,0 +1,104 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	color: #fff;
+}
+
+
+#contenidoAcerca{
+	padding: 2%;
+	box-sizing: border-box;
+}
+
+#CajaDato{
+	padding: 1%;
+	box-sizing: border-box;
+	border: 2px solid #E8E8E8;
+	border-radius: 5px;
+}
+
+
+h2{
+	margin-left: 2%;
+	text-decoration: underline;
+	margin-bottom: 2%;
+}
+#politica{
+	margin-bottom: 2%;
+}
+
+#politica h1{
+	width: 40%;
+	padding: 1%;
+	box-sizing: border-box;
+	background-color: #0C89AD;
+	border-radius: 0px 10px 0px 0px;
+	border-top: 2px solid #E8E8E8;
+	border-right: 2px solid #E8E8E8;
+	border-left: 2px solid #E8E8E8;
+}
+
+#politica p{
+	width: 90%;
+	padding: 1%;
+	box-sizing: border-box;
+
+
+	border:  2px solid #E8E8E8
+	
+}
+
+#objetivos{
+	margin-bottom: 2%;
+
+}
+
+#objetivos h1{
+	
+	width: 40%;
+	padding: 1%;
+	box-sizing: border-box;
+	background-color: #0C89AD;
+	border-radius: 0px 10px 0px 0px;
+	border-top: 2px solid #E8E8E8;
+	border-right: 2px solid #E8E8E8;
+	border-left: 2px solid #E8E8E8;
+}
+
+#objetivos p{
+	
+	width: 90%;
+	padding: 1%;
+	box-sizing: border-box;
+
+
+	border:  2px solid #E8E8E8
+}
+
+
+#mision, #vision {
+	margin-bottom: 2%;
+}
+
+#mision h1, #vision h1{
+	width: 40%;
+	padding: 1%;
+	box-sizing: border-box;
+	background-color: #0C89AD;
+	border-radius: 0px 10px 0px 0px;
+	border-top: 2px solid #E8E8E8;
+	border-right: 2px solid #E8E8E8;
+	border-left: 2px solid #E8E8E8;
+}
+
+#mision p, #vision p{
+	width: 90%;
+	padding: 1%;
+	box-sizing: border-box;
+
+
+	border:  2px solid #E8E8E8
+}

@@ -1,0 +1,84 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: #000;
+}
+
+#ContenidoLi{
+
+	width: 100%;
+	padding: 2%;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+}
+
+#NuevoLi{
+	margin: 0% 0% 1% 0%;
+}
+
+#NuevoLi button, #busqueda button{
+	border: none;
+	background-color: #1589D3;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+}
+#NuevoLi button:hover, #busqueda button:hover{
+	
+	background-color: #0869C4;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#tablaLi h1{
+	text-align: center;
+	background-color: #0C89AD;
+	color: #fff;
+	padding: 4px;
+	box-sizing: border-box;
+}
+
+#busqueda{
+	/*border: 1px solid red;*/
+	
+
+
+	padding: 0.5%;
+	box-sizing: border-box;
+	background-color: #C6F1F7;
+	text-align: right;
+
+}
+
+#NuevoLi{
+	/*border: 1px solid red;*/
+	display: inline-block;
+
+	float: left;
+}
+
+#busqueda input{
+	padding: 7px;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+#ListaLi{
+	width: 100%;
+	max-height: 500px;
+	overflow: auto;
+
+	margin-top: 2%;
+	box-sizing: border-box;
+	color: #fff;
+
+
+	
+}
+
+
+
+
+

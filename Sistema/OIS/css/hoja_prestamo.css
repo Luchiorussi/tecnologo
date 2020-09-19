@@ -1,0 +1,190 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#ContPrestamo{
+
+	width: 100%;
+	margin: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 2%;
+	box-sizing: border-box;
+	background-color: #CEE6E5;
+	border-radius: 10px;
+	/*border: 1px solid #3A9FE6;*/
+	overflow: hidden;
+
+	
+}
+
+#ContDatos{
+	border: 1px solid #000;
+	float: left;
+	width: 45%;
+	overflow: hidden;
+	padding: 2%;
+	box-sizing: border-box;
+	background-color: #16C4DE;
+	border-radius: 10px;
+}
+
+#ContDatos h1{
+	margin: 0px;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	background-color: #0870E5;
+	margin-bottom: 2%;
+	color: #fff;
+}
+
+#ContDatos form div{
+	width: 100%;
+	/*border: 1px solid black;*/
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 1%;
+
+}
+
+#MsjVerificarLector{
+	display: none;
+}
+#FormPrestamo div label{
+	color: #fff;
+	
+}
+#FormPrestamo div label,#FormPrestamo div input{
+	padding: 5px;
+	box-sizing: border-box;
+
+}
+
+
+#FormPrestamo div button{
+	border: none;
+	background-color: #1589D3;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#FormPrestamo div button:hover{
+	background-color: #0869C4;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+#botones{
+
+	text-align: center;
+}
+
+
+/*OTRA CAJA DE LADO DERECHO*/
+#ContListLibros{
+	border:1px solid black;
+	float: right;
+	width: 53%;
+	overflow: hidden;
+	padding: 2%;
+	box-sizing: border-box;
+	background-color: #16C4DE;
+	border-radius: 10px;
+}
+
+#ContListLibros h1{
+	margin: 0px;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	background-color: #0870E5;
+	margin-bottom: 2%;
+	color: #fff;
+}
+
+
+
+#busqueda{
+	width: 100%;
+	/*border: 1px solid black;*/
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 1%;
+
+}
+
+#busqueda button, #busqueda input{
+	padding: 5px;
+	box-sizing: border-box;
+
+
+}
+
+#busqueda button{
+	border: none;
+	background-color: #1589D3;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#busqueda button:hover{
+	background-color: #0869C4;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#busqueda{
+	text-align: right;
+}
+
+
+#ListaLibros{
+	
+	border:1px solid black;
+
+	width: 100%;
+	max-height: 230px;
+	overflow: auto;
+
+}
+
+#FormPrestamo div > label{
+	width: 40%;
+	display: inline-block;
+	float: left;
+}
+
+#FormPrestamo div > div{
+	width: 55%;
+	display: inline-block;
+	float: right;
+}
+
+#FormPrestamo div > input{
+	width: 55%;
+	display: inline-block;
+	float: right;
+}
+
+
+
+#FormPrestamo div  div> input{
+	float: left;
+
+}
+#FormPrestamo div  div> select{
+	float: left;
+	width: 55%;
+
+	padding: 6px;
+	box-sizing: border-box;
+}
+
+#FormPrestamo div  div> button{
+	float: right;
+}

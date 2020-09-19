@@ -1,0 +1,108 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#CModLe{
+ padding: 2%;
+ box-sizing: border-box;
+ color: #fff;
+
+}
+
+#formulario{
+	width: 40%;
+	margin: auto;
+	border: 1px solid #fff;
+
+	box-shadow: 0px 0px 10px #fff;
+
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #C6F1F7;
+}
+
+#formulario h1{
+	padding: 3%;
+	box-sizing: border-box;
+	background-color: #0C89AD;
+	text-align: center;
+	
+}
+
+
+#formulario form{
+	padding: 4%;
+	box-sizing: border-box;
+}
+
+form div{
+	margin: 4% 0%;
+}
+
+
+form div label{
+	color: #000;
+	font-weight: bold;
+	font-size: 15pt;
+
+	width: 30%;
+}
+
+form  div  input{
+	float: right;
+	font-size: 10pt;
+	padding: 5px;
+	box-sizing: border-box;
+	width: 65%;
+}
+
+#botones{
+	text-align: center;
+}
+
+form  button{
+	width: 40%;
+	margin: 2% 4% 0% 4%;
+
+	border: none;
+	background-color: #1589D3;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+
+	display: inline-block;
+}
+
+form button:hover{
+	background-color: #0869C4;
+	text-decoration: underline;
+	cursor: pointer;	
+}
+
+
+
+#GeneradorPadre{
+	margin: 0px;
+	/*border:1px solid black;*/
+	display: inline-block;
+}
+
+#GeneradorHijo{
+	margin:0px;
+	/*border:1px solid black;*/
+	width: 65%;
+	float: right;
+}
+
+#txtnroCarnet{
+	margin: 0px;
+	width: 50%;
+	float: left;
+}
+#btngenerar{
+	padding: 7px;
+	margin: 0px;
+	width: 45%;
+	float: right;
+}

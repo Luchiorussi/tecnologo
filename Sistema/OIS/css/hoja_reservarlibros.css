@@ -1,0 +1,77 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#ContRlibro{
+	margin: 1%;
+	padding: 2%;
+	box-sizing: border-box;
+}
+
+#datosReserva{
+	padding: 2%;
+	background-color: #6CBEED;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+#datosReserva label,#datosReserva input{
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+
+#MsjReserva{
+
+	margin-top: 1%;
+}
+
+#busqueda{
+	text-align: right;
+	margin-bottom: 1%;
+}
+
+
+#busqueda  input, #busqueda button{
+	padding: 4px;
+	box-sizing: border-box;
+}
+
+#datosReserva button, #busqueda button{
+	margin-left: 10px;
+	padding: 6px;
+	box-shadow: 0px 0px 2px #000;
+	border: none;
+	background-color: #084086;
+	border-radius: 4px;
+	color: #fff;
+}
+
+
+#datosReserva button:hover , #busqueda button:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#datosLista{
+	margin-top: 2%;
+	padding: 2%;
+	background-color: #6CBEED;
+	border-radius: 5px;
+	box-sizing: border-box;
+
+}
+
+#ListLibros{
+	max-height: 350px;
+	overflow: auto;
+}
+
+
+#ListLibros table{
+	
+	background-color: #fff;
+	
+
+}

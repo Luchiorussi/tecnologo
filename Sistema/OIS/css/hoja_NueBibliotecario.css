@@ -1,0 +1,26 @@
+@import "hoja_ModBibliotecario.css";
+
+#GeneradorPadre{
+	margin: 0px;
+	/*border:1px solid black;*/
+	display: inline-block;
+}
+
+#GeneradorHijo{
+	margin:0px;
+	/*border:1px solid black;*/
+	width: 65%;
+	float: right;
+}
+
+#txtnroCarnet{
+	margin: 0px;
+	width: 50%;
+	float: left;
+}
+#btngenerar{
+	padding: 7px;
+	margin: 0px;
+	width: 45%;
+	float: right;
+}
