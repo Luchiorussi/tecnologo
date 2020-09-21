@@ -1,17 +1,18 @@
 <?php
-$page_title = 'Lista de mobiliario registrado';
-require_once 'configuracion/Cargar.php';
+  $page_title = 'Lista de Productos';
+  require_once('configuracion/Cargar.php');
 ?>
 
 <?php
-include "Paginacion/connect.php";
-include "Paginacion/paginadorMobiliario.php";
+
+ page_require_level(2);
+
+ $products = join_mobiliario_table();
+ $e_user = find_by_id('mobiliarioaula',(int)$_GET['id']);
+$all_aula = find_all('aula');
+$all_states = find_all('estadomobiliario');
 ?>
-<?php
-// Registrar qué nivel de usuario tiene permiso para ver esta página
-page_require_level(2);
-$products = join_mobiliario_table();
-?>
+
 <?php
 if (isset($_POST["enviar"])) {
 
@@ -52,81 +53,155 @@ if (isset($_POST["enviar"])) {
 
 ?>
 
-<?php include_once 'Diseños/Encabezado.php';?>
- <?php
-if (isset($_POST['buscar'])) {
-    $busca = $_POST['buscar'];
-    require 'cn.php';
-    if ($busca != "") {
-        $consulta = "SELECT m.id, m.NombreMobiliario, m.CodigoMobiliario, a.NombreAula, m.VidaUtilMobiliario, m.VidaUtilMobiliarioFinal, em.NombreEstadoMobiliario ";
-        $consulta .= "FROM MobiliarioAula m ";
-        $consulta .= "INNER JOIN Aula a ON a.id = m.idAula ";
-        $consulta .= "INNER JOIN EstadoMobiliario em ON em.id = m.idNombreEstadoMobiliario ";
-        $consulta .= "WHERE NombreMobiliario LIKE '%" . $busca . "%'";
-        $consulta .= "ORDER BY m.NombreMobiliario ASC";
+<?php
+if(isset($_POST['buscar'])){
+$busca=$_POST['buscar'];
+require 'ConexionBuscador.php';
+if($busca!=""){ 
+  $consulta = "SELECT m.id, m.NombreMobiliario, m.CodigoMobiliario, a.NombreAula, m.VidaUtilMobiliario, m.VidaUtilMobiliarioFinal, em.NombreEstadoMobiliario ";
+  $consulta .="FROM mobiliarioaula m ";
+  $consulta .="INNER JOIN aula a ON a.id = m.idAula ";
+  $consulta .="INNER JOIN estadomobiliario em ON em.id = m.idNombreEstadoMobiliario ";
+  $consulta .="WHERE NombreMobiliario LIKE '%".$busca."%'";
+  $consulta .="ORDER BY m.NombreMobiliario ASC";
+  
 
-        $products = $mysqli->query($consulta);
-    }}
+  $products = $mysqli->query($consulta);
+}}
 ?>
 
+<?php
+if(isset($_POST['buscar1'])){
+$busca1=$_POST['buscar1'];
+require 'ConexionBuscador.php';
+if($busca1!=""){
+	$consultar = "SELECT m.id, m.NombreMobiliario, m.CodigoMobiliario, a.NombreAula, m.VidaUtilMobiliario, m.VidaUtilMobiliarioFinal, em.NombreEstadoMobiliario FROM mobiliarioaula m
+     INNER JOIN aula a ON a.id = m.idAula 
+    INNER JOIN estadomobiliario em ON em.id = m.idNombreEstadoMobiliario  WHERE idAula LIKE '".$busca1."'";
+  $consultar .="ORDER BY m.NombreMobiliario ASC";
+	
+
+	$products = $mysqli->query($consultar);
+}}
+?>
+
+
+<?php
+if(isset($_POST['buscar2'])){
+$busca2=$_POST['buscar2'];
+require 'ConexionBuscador.php';
+if($busca2!=""){
+  $consultas = "SELECT m.id, m.NombreMobiliario, m.CodigoMobiliario, a.NombreAula, m.VidaUtilMobiliario, m.VidaUtilMobiliarioFinal, em.NombreEstadoMobiliario FROM mobiliarioaula m INNER JOIN aula a ON a.id = m.idAula INNER JOIN estadomobiliario em ON em.id = m.idNombreEstadoMobiliario  WHERE idNombreEstadoMobiliario LIKE '".$busca2."'";
+  $consultas .="ORDER BY m.NombreMobiliario ASC";
+  
+
+  $products = $mysqli->query($consultas);
+}}
+?>
+
+
 <html>
- <body style="background: #E2E2E1;">
+<body>
+<?php include_once('Disenos/Encabezado.php'); ?>
+
 <div class="row">
    <div class="col-md-12">
      <?php echo display_msg($msg); ?>
    </div>
 </div>
 
-<div class="row" >
+
+  
+
+<div class="row">
   <div class="col-md-12">
-    <div class="panel panel-default" style="background: #FFF;">
-
-      <div class="panel-heading clearfix" style="background: #0174DF;">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix" style="background:#0588FC;">
         <strong>
-          <span class="glyphicon glyphicon-tasks" style="color: #FFF;"></span>
-          <span style="color: #FFF;">Mobiliario</span>
+          <span class="glyphicon glyphicon-tasks" style="color:#FFF;"></span>
+          <span style="color:#FFF;">Mobiliarios</span>
        </strong>
-        <div class="pull-right">
-           <a href="plantillas/plantilla.xlsx" style="margin-left: 10px" class="btn btn-primary"  download="plantilla.xlsx">Manual de mobiliario</a>
-         </div>
 
-         <strong>
-         <a href="Agregar_producto.php" class="btn btn-info pull-right">Agregar mobiliario</a>
-       </strong>
-       <br>
-       <h1 style="color: #FFF;" align="center">Subir Archivos</h1>
-          <div class="formulario">
-             <form action="Producto.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
-         <input type="file"  name="archivo" class="form-control"/>
-        <input type="submit"  value="SUBIR ARCHIVO"  class="form-control" name="enviar">
-        </form>
+         
+        <!--boton de Manuales--->
+        <div class="pull-right">
+           <a href="plantillas/ManualUsuario.pdf" style="margin-left: 3%" class="btn btn-primary"  download="ManualUsuario.pdf">Manual de mobiliario
+                  <i  class="glyphicon glyphicon-download-alt"></i>
+           </a>
+         </div>
+         <!--Boton de descargar--->
+         <a href="Agregar_producto.php"  style="margin-left: 1000px" class="btn btn-primary"  >Agregar Mobiliario</a>
+         
+
+        <!--Carga masiva--->
+      <h1 align="center" style="color:#FFF;">Subir Archivos</h1>
+      <div class="formulario">
+          <form action="Producto.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
+            <input type="file" name="archivo" class="form-control"/>
+            <input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar">
+          </form>
       </div>
 
+    <!--Buscar Mobiliario--->
+      <br>
+      <label style="color:#FFF;">Mobiliario</label>
+        <div>
+                <form action="Producto.php" method="POST">
+                  <label><input type="text" placeholder="Mobiliario" name="buscar"></label>
+                    <input type="submit" class="btn btn-primary"   name="enviando" value="Buscar por mobiliario" >
+              </form>
+        </div>
 
-      <h1 style="color: #FFF; font-size: 150%">Mobiliario</h1>
-  <div>
-  <form action="Producto.php" method="POST">
-  <label><input type="text"  name="buscar" ></label>
-<input type="submit" class="btn btn-info " name="enviando" value="Buscar por mobiliario" >
+
+    <div>
+<label sc for="idAula" style="color:#FFF;">Aula del mobiliario</label>
+<form action="Producto.php" method="POST">
+
+  
+                <select class="col-md-3" class="form-control" name="buscar1">
+                <option value=""></option>
+                  <?php foreach ($all_aula as $all_aul):?>
+                   <option <?php if($all_aul['id'] === $e_user['idAula']) 
+                   echo 'selected="selected"';?> value="<?php echo $all_aul['id'];?>"><?php echo ucwords($all_aul['NombreAula']);?></option>
+                 <?php endforeach;?>
+                 </select>
+                 
+<input type="submit" class="btn btn-primary "   style="margin-left: 10px" name="enviando1" value="Buscar por aulas" >
+
 </form>
-  </div>
+</div>
+
+
 <div>
+<label sc for="idAula" style="color:#FFF;">Estados del mobiliario</label>
+<form action="Producto.php" method="POST">
 
+  
+                <select class="col-md-3" class="form-control" name="buscar2">
+                  <option value=""></option>
+                  <?php foreach ($all_states as $all_stat):?>
+                   <option <?php if($all_stat['id'] === $e_user['idNombreEstadoMobiliario']) 
+                   echo 'selected="selected"';?> value="<?php echo $all_stat['id'];?>"><?php echo ucwords($all_stat['NombreEstadoMobiliario']);?></option>
+                 <?php endforeach;?>
+                 </select>
+                  
+                 
+<input type="submit" class="btn btn-primary " style="margin-left: 10px"  name="enviando2" value="Buscar por estado" >
+
+</form>
 </div>
 
-</body>
-</html>
-</div>
 
 
 
 
+      </div>
 
-        <div class="panel-body">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th class="text-center" style="width: 10px;">#</th>
+      <div class="panel-body">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+          <th class="text-center" style="width: 10px;">#</th>
                 <th class="text-center" style="width: 45%;"> Nombre Mobiliario </th>
                 <th class="text-center" style="width: 10%;"> Codigo de Mobiliario </th>
                 <th class="text-center" style="width: 15%;"> Nombre del Aula </th>
@@ -134,96 +209,44 @@ if (isset($_POST['buscar'])) {
                 <th class="text-center" style="width: 15%;">Vida Util Final</th>
                 <th class="text-center" style="width: 15%;">Estado Mobiliario</th>
                 <th class="text-center" style="width: 5px;">Acciones</th>
-              </tr>
-            </thead>
+          </tr>
+        </thead>
 
-            <tbody>
-              <?php
-if ($totalregistros >= 1):
-    foreach ($registros as $reg):
-    ?>
-                        <tr>
-                          <td class="text-center"><?php echo count_id(); ?></td>
-
-                         <td> <?php echo remove_junk($reg['NombreMobiliario']); ?></td>
-                         <td class="text-center"> <?php echo remove_junk($reg['CodigoMobiliario']); ?></td>
-                          <td class="text-center"> <?php echo remove_junk($reg['NombreAula']); ?></td>
-                          <td class="text-center"> <?php echo remove_junk($reg['VidaUtilMobiliario']); ?></td>
-                          <td class="text-center"> <?php echo remove_junk($reg['VidaUtilMobiliarioFinal']); ?></td>
-                          <td class="text-center"> <?php echo remove_junk($reg['NombreEstadoMobiliario']); ?></td>
-                          <td class="text-center">
-                          <div class="btn-group">
-                              <a href="Editar_producto.php?id=<?php echo (int) $reg['id']; ?>" class="btn btn-info btn-xs"  title="Editar" data-toggle="tooltip">
-                                <span class="glyphicon glyphicon-edit"></span>
-                              </a>
-                               <a href="Eliminar_producto.php?id=<?php echo (int) $reg['id']; ?>" class="btn btn-danger btn-xs"  title="Eliminar" data-toggle="tooltip">
-                                <span class="glyphicon glyphicon-trash"></span>
-                              </a>
-
-                            </div>
-                          </tr>
-                          <?php endforeach;
-else:
-?>
-                <tr>
-                  <td colspan="9">No hay registros</td>
-                </tr>
-                  <?php endif;?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <?php if ($totalregistros >= 1): ?>
-<nav aira-label="Page navigation" class="text-center">
-  <ul class="pagination" >
-    <?php if ($pagina == 1): ?>
-    <li class="disabled">
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <?php else: ?>
-      <li >
-      <a href="Producto.php?pagina=<?php echo $pagina - 1; ?>" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-  <?php endif;
-for ($i = 1; $i <= $numeropaginas; $i++) {
-    if ($pagina == $i) {
-        echo '<li class="active"><a href="Producto.php?pagina=' . $i . '">' . $i . '</a></li>';
-    } else {
-        echo '<li><a href="Producto.php?pagina=' . $i . '">' . $i . '</a></li>';
-    }
-}
-if ($pagina == $numeropaginas):
-?>
-    <li class="disabled">
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-    <?php else: ?>
-      <li>
-      <a href="Producto.php?pagina=<?php echo $pagina + 1; ?>" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-    <?php endif;?>
-  </ul>
-</nav>
-<?php endif;?>
-      </div>
+        <tbody>
+        <?php foreach($products as $product): ?>
+            <tr>
+           <td class="text-center"><?php echo count_id();?></td>
+           <td><?php echo remove_junk(ucwords($product['NombreMobiliario']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($product['CodigoMobiliario']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($product['NombreAula']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($product['VidaUtilMobiliario']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($product['VidaUtilMobiliarioFinal']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($product['NombreEstadoMobiliario']))?></td>
+          <td class="text-center">
+             <div class="btn-group">
+                <a href="Editar_producto.php?id=<?php echo (int)$product['id'];?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                  <i class="glyphicon glyphicon-pencil"></i>
+               </a>
+                <a href="Eliminar_producto.php?id=<?php echo (int)$product['id'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                  <i class="glyphicon glyphicon-remove"></i>
+                </a>
+                </div>
+           </td>
+           </tr>
+        <?php endforeach;?>
+       </tbody>
+     </table>
+     </div>
     </div>
+  </div>
+</div>
 
-    <?php include_once 'Diseños/Pie_De_Pagina.php'?>
-
-
-
-
-
-
-
-
-
+        <div class="pull-left">       
+              <a href="plantillas/plantilla.xlsx" class="btn btn-primary"   download="plantilla.xlsx">DESCARGAR PLANTILLA DE MOBILIARIO
+                <i  class="glyphicon glyphicon-download-alt"></i>
+              </a>
+         </div>
+  <?php include_once('Disenos/Pie_de_Pagina.php'); ?>
+</body>
+</html>
 

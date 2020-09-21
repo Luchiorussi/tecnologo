@@ -1,7 +1,7 @@
 <?php
-  $page_title = 'Editar_Aulas';
+  $page_title = 'Editar Aulas';
   require_once('configuracion/Cargar.php');
-  // Checkin What level user has permission to view this page
+  
    page_require_level(2);
 ?>
 <?php
@@ -23,11 +23,13 @@ if(!$aula){
           $a_EstadoAula  = $db->escape((int)$_POST['EstadoAula']); 
         
 
-          $sql  = "UPDATE aula SET";
-          $sql .= " NombreAula='{$a_NombreAula}',EstadoAula='{$a_EstadoAula}'";
-          $sql .= " WHERE id ='{$aula['id']}'";
-          $result = $db->query($sql);
-          if( $result && $db->affected_rows() === 1){
+
+
+ $sql  = "UPDATE aula SET";
+ $sql .= " NombreAula='{$a_NombreAula}',EstadoAula='{$a_EstadoAula}'";
+ $sql .= " WHERE id ='{$aula['id']}'";
+ $result = $db->query($sql);
+ if( $result && $db->affected_rows() === 1){
                     
                     $session->msg('s',"Aula actualizado.");
                     redirect('Aulas.php', false);
@@ -42,66 +44,46 @@ if(!$aula){
   }
 
 ?>
-<?php include_once('Diseños/Encabezado.php'); ?>
+<?php include_once('Disenos/Encabezado.php'); ?>
+
+
 <div class="row">
+   <div class="col-md-12"> <?php echo display_msg($msg); ?> </div>
   <div class="col-md-6">
-    <?php echo display_msg($msg); ?>
-  </div>
-</div>
-<div class="row">
-
-  <div class="col-md-12">
-  <div class="panel">
-    <div class="panel-heading clearfix">
-      <strong>
-        <span class="glyphicon glyphicon-th"></span>
-        <span>todas las Aulas</span>
-     </strong>
-     <div class="pull-right">
-       <a href="Aulas.php" class="btn btn-primary">Mostrar todos los detalles</a>
-     </div>
-    </div>
-    <div class="panel-body">
-       <table class="table table-bordered">
-         <thead>
-          <th> NombreAula </th>
-          <th> EstadoAula </th>
-          <th> Action</th>
-         </thead>
-           <tbody  id="product_info">
-              <tr>
-              <form method="post" action="Editar_Aulas.php?id=<?php echo (int)$aula['id']; ?>">
-                <td id="a_NombreAula">
-                  <input type="text" class="form-control" id="sug_input" name="NombreAula" value="<?php echo remove_junk($aula['NombreAula']); ?>">
-                  <div id="result" class="list-group"></div>
-                </td>
-                <td id="a_EstadoAula">
-                <div class="form-group">
-          <label for="EstadoAula">Estado</label>
-            <select class="form-control" name="EstadoAula">
-              <option value="1">Activo</option>
-              <option value="0">Inactivo</option>
-            </select>
+     <div class="panel panel-default">
+       <div class="panel-heading">
+        <strong>
+          <span class="glyphicon glyphicon-inbox"></span>
+          Actualiza el mobiliario <?php echo remove_junk(ucwords($aula['NombreAula'])); ?>
+        </strong>
         </div>
-                </td>
-                
-                <td>
-                  
-                  <button href="Producto.php" type="submit" name="update_Aula" class="btn btn-primary" style="font-size: 18px;">Actualizar Aula</button>
 
-                  
-                  
-                </td>
 
-              </form>
-              </tr>
-           </tbody>
-       </table>
+        <div class="panel-body">
+          <form method="post" action="Editar_Aulas.php?id=<?php echo (int)$aula['id'];?>" class="clearfix">
+            <div class="form-group">
+                  <label for="NombreAula" class="control-label">Nombre del Aulas</label>
+                  <input type="name" class="form-control" name="NombreAula" value="<?php echo remove_junk ($aula['NombreAula']); ?>">
+            </div>
 
-    </div>
-  </div>
-  </div>
+        
+            <div class="form-group">
+              <label for="Estado">Estado</label>
+                <select class="form-control" name="EstadoAula">
+                  <option <?php if($aula['EstadoAula'] === '1') echo 'selected="selected"';?>value="1">Activo</option>
+                  <option <?php if($aula['EstadoAula'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
+                </select>
+            </div>
+            
+            <div class="form-group clearfix">
+                    <button type="submit" name="update_Aula" class="btn btn-info">Actualizar</button>
+            </div>
 
+
+
+
+            </div>
+        </div>
+   </div> 
 </div>
-
-<?php include_once('Diseños/Pie_De_Pagina.php'); ?>
+<?php include_once('Disenos/Pie_de_Pagina.php'); ?>

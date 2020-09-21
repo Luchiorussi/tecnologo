@@ -1,7 +1,7 @@
 <?php 
 $page_title = 'Registrar alguna novedad';
-	require_once('configuracion/Cargar.php');
-	// Compruebe en qué nivel el usuario tiene permiso para ver esta página.
+    require_once('configuracion/Cargar.php');
+    // Compruebe en qué nivel el usuario tiene permiso para ver esta página.
 page_require_level(5);
 $aula = find_all('aula');
 $product = find_all('mobiliarioaula');
@@ -20,7 +20,7 @@ if(empty($errors)){
  $idEstadoMobiliario =remove_junk($db->escape($_POST['idEstadoMobiliario']));
  $DescripcionNovedad = remove_junk($db->escape($_POST['DescripcionNovedad']));
  
- $query = "INSERT INTO Novedad(";
+ $query = "INSERT INTO novedad(";
  $query .="idUsuario,idAula,idMobiliarioaula,idEstadoMobiliario,DescripcionNovedad";
  $query .=") VALUES (";
  $query .=" '{$idUsuario}', '{$idAula}', '{$idMobiliarioaula}', '{$idEstadoMobiliario}', 
@@ -28,11 +28,11 @@ if(empty($errors)){
  $query .=")";
  
  if($db->query($query)){
-  $session->msg('s'," Novedad Registrada Gracias Por Reportar Alguna Inconformidad");
+  $session->msg('s'," Novedad Registrada Gracias Por Reportar Su Inconformidad");
    redirect('Novedad.php', false);
  }else {
           //failed
-          $session->msg('d',' No se pudo crear Crear La Novedad Intenta De Nuevo.');
+          $session->msg('d',' No se pudo crear  La Novedad Intenta De Nuevo.');
           redirect('Novedad.php', false);
         }
    } else {
@@ -43,10 +43,11 @@ if(empty($errors)){
 ?>
 
 
-<?php include_once('Diseños/Encabezado.php'); ?>
+<?php include_once('Disenos/Encabezado.php'); ?>
 
 <?php echo display_msg($msg); ?>
   <div class="row">
+  <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading" style="background: #0174DF;">
         <strong>
@@ -110,8 +111,8 @@ if(empty($errors)){
 
 
             <div class="form-group clearfix">
-              <button type="submit" name="add_novedad" class="btn btn-primary"style="font-size: 18px;">Enviar</button>
-              <a href="Administrador.php" class="btn btn-danger" style="font-size: 18px;">Regresar</a>
+              <button type="submit" name="add_novedad" class="btn btn-primary" style="font-size: 15px;">Enviar</button>
+              <a href="Sugerencia.php" class="btn btn-danger" style="font-size: 15px;">Regresar</a>
             </div>
           </form>
         </div>
@@ -124,5 +125,4 @@ if(empty($errors)){
 
 
 
-
-<?php include_once('Diseños/Pie_De_Pagina.php') ?>
+<?php include_once('Disenos/Pie_de_Pagina.php'); ?>

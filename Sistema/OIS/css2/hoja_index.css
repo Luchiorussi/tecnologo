@@ -156,7 +156,7 @@ nav{
 	font-weight: bold;
 	font-size: 17px;
 	height: 40px;
-	
+	position: relative;
 	background:  #0C89AD;
 }
 
@@ -167,11 +167,13 @@ nav ul li{
 	padding: 10px 20px;
 	line-height: 40px;
 	color: #fff;
+    
 }
 
 nav ul li a{
 	color: #fff;
 	text-decoration: none;
+    display: block;
 }
 
 li:hover, nav ul li a:hover {

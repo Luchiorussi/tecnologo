@@ -1,56 +1,16 @@
-<?php 
-
-require_once('configuracion/Cargar.php');
-
+<?php
+  require_once("configuracion/Cargar.php");
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Función Para Buscar Todas las Filas de la Tabla de Base de Datos por Nombre de Tabla 			*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function find_all($table){ //Encontrar Filas de la Base de Datos SISTEMA-OIS
-	global $db;
-	if (tableExists($table)) {
-		return find_by_sql("SELECT * FROM ". $db->escape($table));
-	}
-}
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Función Para subir archivos csv en la Base de Datos SISTEMA-OIS 								*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-function insertar_datos_mobiliario($NombreMobiliario,$CodigoMobiliario,$idAula,$VidaUtilMobiliario,$VidaUtilMobiliarioFinal,$idNombreEstadoMobiliario){
-global $db;
-$sql = "insert into mobiliarioaula (NombreMobiliario, CodigoMobiliario, idAula, VidaUtilMobiliario, VidaUtilMobiliarioFinal, idNombreEstadoMobiliario) VALUES
-('$NombreMobiliario','$CodigoMobiliario','$idAula','$VidaUtilMobiliario','$VidaUtilMobiliarioFinal','$idNombreEstadoMobiliario')";
-$ejecutar = $result = $db->query($sql);
-return $ejecutar; 
-}
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Función Para subir archivos csv en la Base de Datos SISTEMA-OIS 	csv							*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-function insertar_datos_usuario($Nombre,$Apellido,$idCargoUsuario,$idTipoDocumento, $NoDocumento,$CorreoElectronico){
+function find_all($table) {//Encontrar Filas de la Base de Datos SISTEMA-OIS
     global $db;
-  $sql  = "INSERT INTO usuario(Nombre, Apellido,idCargoUsuario, idTipoDocumento, NoDocumento, CorreoElectronico) values ('$Nombre','$Apellido','$idCargoUsuario','$idTipoDocumento','$NoDocumento','$CorreoElectronico')";
-  $ejecutar = $result = $db->query($sql);
-  return $ejecutar;
- }
-
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Función Para subir archivos csv en la Base de Datos SISTEMA-OIS 								*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-function insertar_datos_aula($NombreAula,$EstadoAula){
-    global $db;
-  $sql  = "insert into aula (NombreAula, EstadoAula) values ('$NombreAula','$EstadoAula')";
-  $ejecutar = $result = $db->query($sql);
-  return $ejecutar;
+    if(tableExists($table))
+    {
+      return find_by_sql("SELECT * FROM ".$db->escape($table));
+    }
  }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -58,12 +18,12 @@ function insertar_datos_aula($NombreAula,$EstadoAula){
 /*| Función Para Realizar Consultas en la Base de Datos SISTEMA-OIS 								*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function find_by_sql($sql){ //Encontrar por Sql
-	global $db;
-	$result = $db->query($sql);
-	$result_set = $db->while_loop($result);
-	return $result_set;
+function find_by_sql($sql)//Encontrar por sql
+{
+  global $db;
+  $result = $db->query($sql);
+  $result_set = $db->while_loop($result);
+ return $result_set;
 }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -71,94 +31,85 @@ function find_by_sql($sql){ //Encontrar por Sql
 /*| Función Para Buscar Datos de la Tabla por Id 													*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-function find_by_id($table,$id){ //Encontrar por Sql
-	global $db;
-	$id = (int)$id;
-		if (tableExists($table)) {
-			$sql = $db->query("SELECT * FROM {$db->escape($table)} WHERE id='{$db->escape($id)}' LIMIT 1");	
-			if ($result = $db->fetch_assoc($sql)) 
-				return $result;
-			else 
-				return null;
-			
-		}
+function find_by_id($table,$id)//Encntrar por Sql
+{
+  global $db;
+  $id = (int)$id;
+    if(tableExists($table)){
+          $sql = $db->query("SELECT * FROM {$db->escape($table)} WHERE id='{$db->escape($id)}' LIMIT 1");
+          if($result = $db->fetch_assoc($sql))
+            return $result;
+          else
+            return null;
+     }
 }
-
-
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Función para Eliminar datos de la tabla por id 													*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function delete_by_id($table,$id){ //Eliminar Por Id
-	global $db;
-	if (tableExists($table)) {
-		$sql = "DELETE FROM ".$db->escape($table);
-		$sql .= " WHERE id=". $db->escape($id);
-		$sql .= " LIMIT 1";
-		$db->query($sql);
-		return ($db->affected_rows() === 1 ) ? true : false;
-	}
+function delete_by_id($table,$id)//Eliminar por Id
+{
+  global $db;
+  if(tableExists($table))
+   {
+    $sql = "DELETE FROM ".$db->escape($table);
+    $sql .= " WHERE id=". $db->escape($id);
+    $sql .= " LIMIT 1";
+    $db->query($sql);
+    return ($db->affected_rows() === 1) ? true : false;
+   }
 }
-
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Funcion Para Contar Id por Nombre de la Tabla 													*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
 function count_by_id($table){
-  global $db;
-  if(tableExists($table))
-  {
-    $sql    = "SELECT COUNT(id) AS total FROM ".$db->escape($table);
-    $result = $db->query($sql);
-     return($db->fetch_assoc($result));
-	}	
-}
-
+    global $db;
+    if(tableExists($table))
+    {
+      $sql    = "SELECT COUNT(id) AS total FROM ".$db->escape($table);
+      $result = $db->query($sql);
+       return($db->fetch_assoc($result));
+    }
+  }
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Determinar si existe una tabla de base de datos 												*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function tableExists($table){ //Tabla Existente
-  global $db;
-  $table_exit = $db->query('SHOW TABLES FROM '.DB_NAME.' LIKE "'.$db->escape($table).'"');
-      if($table_exit) {
-        if($db->num_rows($table_exit) > 0)
-              return true;
-         else
-              return false;
-      }
-  }
-
+function tableExists($table){
+    global $db;
+    $table_exit = $db->query('SHOW TABLES FROM '.DB_NAME.' LIKE "'.$db->escape($table).'"');
+        if($table_exit) {
+          if($db->num_rows($table_exit) > 0)
+                return true;
+           else
+                return false;
+        }
+    }
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Iniciar Sesión Con Datos Proporcionados En El Metodo $ _POST,									*/
 /*| Proveniente Del Formulario de Inicio de Sesión. 												*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function authenticate($NoDocumento='',$ClaveUsuario=''){ //Autentifiacion de Usuario
-	global $db;
-	$NoDocumento = $db->escape($NoDocumento);
-	$ClaveUsuario = $db->escape($ClaveUsuario);
-	$sql = sprintf("SELECT id,NoDocumento,ClaveUsuario,idCargoUsuario FROM Usuario WHERE NoDocumento ='%s'  LIMIT 1", $NoDocumento);
-	$result = $db->query($sql);
-	if($db->num_rows($result)) {
-		$user = $db->fetch_assoc($result);
-		$password_request = sha1($ClaveUsuario);
-		if($password_request === $user['ClaveUsuario'] ) {
-			return $user['id'];
-		}
-	}
-	return false;
-}
-
-
+function authenticate($NoDocumento='', $ClaveUsuario='') {
+    global $db;
+    $NoDocumento = $db->escape($NoDocumento);
+    $ClaveUsuario = $db->escape($ClaveUsuario);
+    $sql  = sprintf("SELECT id,NoDocumento,ClaveUsuario,idCargoUsuario FROM usuario WHERE NoDocumento ='%s' LIMIT 1", $NoDocumento);
+    $result = $db->query($sql);
+    if($db->num_rows($result)){
+      $user = $db->fetch_assoc($result);
+      $password_request = sha1($ClaveUsuario);
+      if($password_request === $user['ClaveUsuario'] ){
+        return $user['id'];
+      }
+    }
+   return false;
+  }
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Iniciar Sesión Con Datos Proporcionados En El Metodo $ _POST,									*/
@@ -166,55 +117,49 @@ function authenticate($NoDocumento='',$ClaveUsuario=''){ //Autentifiacion de Usu
 /*| Si se usa Este Metodo, se Elimina la Funcion de Autenfificacion 								*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function authenticate_v2($NoDocumento='',$ClaveUsuario=''){
-	global $db;
-	$NoDocumento = $db->escape($NoDocumento);
-	$ClaveUsuario = $db->escape($ClaveUsuario);
-	$sql = sprintf("SELECT id,NoDocumento,ClaveUsuario,idCargoUsuario FROM Usuario WHERE NoDocumento ='%s' LIMIT 1", $NoDocumento);
-	$result = $db->query($sql);
-	if ($db->num_rows($result)) {
-		$user = $db->fetch_assoc($result);
-		$password_request = sha1($ClaveUsuario);
-		if ($password_request === $user['ClaveUsuario']) {
-			return $user;
-		}
-	}
-	return false;
-}
-
+function authenticate_v2($NoDocumento='', $ClaveUsuario='') {
+    global $db;
+    $NoDocumento = $db->escape($NoDocumento);
+    $ClaveUsuario = $db->escape($ClaveUsuario);
+    $sql  = sprintf("SELECT id,NoDocumento,ClaveUsuario,idCargoUsuario FROM usuario WHERE NoDocumento ='%s' LIMIT 1", $NoDocumento);
+    $result = $db->query($sql);
+    if($db->num_rows($result)){
+      $user = $db->fetch_assoc($result);
+      $password_request = sha1($ClaveUsuario);
+      if($password_request === $user['ClaveUsuario'] ){
+        return $user;
+      }
+    }
+   return false;
+  }
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Encuentra el Usuario de Inicio de Sesión Actual Por ID de Sesión 								*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-
-function current_user(){ //Usuario Actual
-		static $current_user;
-		global $db;
-		if(!$current_user){
-			if (isset($_SESSION['user_id'])):
-				$user_id = intval($_SESSION['user_id']);
-			 	$current_user = find_by_id('Usuario',$user_id);
-			endif;
-		}
-		return $current_user;
+function current_user(){
+    static $current_user;
+    global $db;
+    if(!$current_user){
+       if(isset($_SESSION['user_id'])):
+           $user_id = intval($_SESSION['user_id']);
+           $current_user = find_by_id('usuario',$user_id);
+      endif;
+    }
+  return $current_user;
 }
-
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Encuentra todos los usuarios por la Union de las Tablas Usuario y TipoCargo 					*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
 function find_all_user(){ //Encontrar Usuarios
 	global $db;
 	$results = array();
 	$sql = "SELECT u.id,u.Nombre,u.Apellido,cg.NombreCargo,td.NombreTipoDocumento,
 	u.NoDocumento,u.CorreoElectronico,u.UltimoLogin,";
 	$sql .="u.Estado ";
-	$sql .="FROM Usuario u ";
+	$sql .="FROM usuario u ";
 	$sql .="INNER JOIN tipodocumento td   ";
 	$sql .="ON td.id = u.idTipoDocumento ";
 	$sql .="INNER JOIN cargousuario cg   ";
@@ -222,30 +167,27 @@ function find_all_user(){ //Encontrar Usuarios
 	$result = find_by_sql($sql);
 	return $result;
 }
-
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Función para actualizar el último inicio de sesión de un usuario 								*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function updateLastLogIn($user_id){ //Ultimo Inicio de Sesion del usuario
-	global $db;
-	$date = make_date();
-	$date = "UPDATE Usuario SET UltimoLogin='{$date}' Where id='{$user_id}' LIMIT 1";
-	$result =$db->query($sql);
-	return ($result && $db->affected_rows() === 1 ? true : false);
-}
-
-
+function updateLastLogIn($user_id)
+	{
+		global $db;
+    $date = make_date();
+    $sql = "UPDATE usuario SET UltimoLogin='{$date}' WHERE id ='{$user_id}' LIMIT 1";
+    $result = $db->query($sql);
+    return ($result && $db->affected_rows() === 1 ? true : false);
+  }
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Funcion Para Buscar por Tipo de Cargo 															*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-
-function find_by_groupName($val){ //Tipos de Grupos por Tipo de Cargo
-	global $db;
+function find_by_groupName($val)
+  {
+    global $db;
     $sql = "SELECT NombreCargo FROM cargousuario WHERE NombreCargo = '{$db->escape($val)}' LIMIT 1 ";
     $result = $db->query($sql);
     return($db->num_rows($result) === 0 ? true : false);
@@ -255,21 +197,19 @@ function find_by_groupName($val){ //Tipos de Grupos por Tipo de Cargo
 /*| Funcion Para Buscar por Tipo de Documento															*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
-function find_by_groupDocumento($val){
-	global $db;
-	$sql = "SELECT NombreTipoDocumento FROM TipoDocumento WHERE NombreTipoDocumento = 
-	'{$db->escape($val)}' LIMIT 1";
-	$result = $db->query($sql);
-	return($db->num_rows($result) === 0 ? true : false);
-}
-
-
+function find_by_groupDocumento($val)
+  {
+    global $db;
+    $sql = "SELECT NombreTipoDocumento FROM tipodocumento WHERE NombreTipoDocumento = '{$db->escape($val)}' LIMIT 1 ";
+    $result = $db->query($sql);
+    return($db->num_rows($result) === 0 ? true : false);
+  }
 /*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Funcion Para Buscar por nivel del Tipo de Cargo 												*/
-/*|																									*/
+/*|																									                                                */
+/*| Funcion Para Buscar por nivel del Tipo de Cargo 											                        	*/
+/*|																									                                                */
 /*--------------------------------------------------------------------------------------------------*/
-function find_by_groupLevel($level)
+  function find_by_groupLevel($level)
   {
     global $db;
     $sql = "SELECT NivelVisibilidad FROM cargousuario WHERE NivelVisibilidad = '{$db->escape($level)}' LIMIT 1 ";
@@ -277,40 +217,32 @@ function find_by_groupLevel($level)
     return($db->num_rows($result) === 0 ? true : false);
   }
 
-
-
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Función Para Detectar Qué Nivel de Usuario Tiene Acceso a la página 							*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
+function page_require_level($require_level){
+  global $session;
+  $current_user = current_user();
+  $login_level = find_by_groupLevel($current_user['idCargoUsuario']);
+  //Si el Usuario no Inicia Sesión
+  if (!$session->isUserLoggedIn(true)):
+         $session->msg('d','Por favor Iniciar sesión...');
+         redirect('InicioSesion.php', false);
+   //Si el Estado del Grupo Está Inactivo
+  elseif($login_level['Estado'] === '0'):
+        $session->msg('d','Este nivel de usuario esta inactivo!');
+        redirect('Bienvenido.php',false);
+   //Verificar el Nivel de Usuario de Inicio de Sesión y el Nivel Requerido es Menor o Igual a
+  elseif($current_user['idCargoUsuario'] <= (int)$require_level):
+           return true;
+   else:
+         $session->msg("d", "¡Lo siento!  no tienes permiso para ver la página.");
+         redirect('Bienvenido.php', false);
+     endif;
 
-function page_require_level ($require_level){ //Nivel de Visibilidad Para los Formularios
-	global $session;
-	$current_user = current_user();
-	$login_level = find_by_groupLevel($current_user['idCargoUsuario']);
-
-	//Si el Usuario no Inicia Sesión
-	if(!$session->isUserLoggedIn(true)):
-		$session->msg('d','Por Favor Iniciar Sesión...');
-		redirect('InicioSesion.php',false);
-
-	//Si el Estado del Grupo Está Inactivo
-	elseif($login_level['Estado'] === '0'):
-		$session->msg('d','Este nivel de Usuario Esta Inactivo!');
-		redirect('Bienvenido.php',false);
-
-	//Verificar el Nivel de Usuario de Inicio de Sesión y el Nivel Requerido es Menor o Igual a
-	elseif($current_user['idCargoUsuario'] <= (int)$require_level):
-		return true;
-
-	else:
-		$session->msg('d','¡Lo siento! No tienes Permiso Para Ver la Pagina.');
-		redirect('Bienvenido.php', false);
-	endif;
-}
-
-
+  }
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
 /*| Función Para Enncontrar Todo el Nombre del Mobiliario 											*/
@@ -321,9 +253,9 @@ function page_require_level ($require_level){ //Nivel de Visibilidad Para los Fo
 function join_mobiliario_table(){
 	global $db;
 	$sql ="SELECT m.id, m.NombreMobiliario, m.CodigoMobiliario, a.NombreAula, m.VidaUtilMobiliario, m.VidaUtilMobiliarioFinal, em.NombreEstadoMobiliario ";
-	$sql .="FROM MobiliarioAula m ";
-	$sql .="INNER JOIN Aula a ON a.id = m.idAula ";
-	$sql .="INNER JOIN EstadoMobiliario em ON em.id = m.idNombreEstadoMobiliario ";
+	$sql .="FROM mobiliarioaula m ";
+	$sql .="INNER JOIN aula a ON a.id = m.idAula ";
+	$sql .="INNER JOIN estadomobiliario em ON em.id = m.idNombreEstadoMobiliario ";
 	$sql .="ORDER BY m.NombreMobiliario ASC";
 	return find_by_sql($sql);
 }
@@ -340,90 +272,6 @@ return find_by_sql($sql);
 
 /*--------------------------------------------------------------------------------------------------*/
 /*|																									*/
-/*| Función Para Encontrar Todo El Nombre del Mobiliario 											*/
-/*| Solicitud Proveniente de ajax.php Para Sugerir Automáticamente 									*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-
-function find_mobiliario_by_tittle($product_name){ //Encontrar Mobiliario por Título
-	global $db;
-	$p_name = remove_junk($db->escape($product_name));
-	$sql = "SELECT NombreMobiliario FROM mobiliarioaula where NombreMobiliario '%$p_name%' LIMIT 5";
-	$result = find_by_sql($sql);
-	return $result;
-}
-
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Función Para Encontrar Toda la Información del Mobiliario Por Título de Mobiliario 				*/
-/*| Solicitud Proveniente de ajax.php 																*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-
-function find_all_mobiliario_info_by_title($title){ //Encontrar Toda la Información del Mobiliario Por Título
-	global $db;
-	$sql ="SELECT * FROM mobiliarioaula";
-	$sql .="WHERE NombreMobiliario ={'$title'}";
-	$sql .="LIMIT 1";
-	return find_by_sql($sql);
-}
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Función Para Encontrar Toda la Información del Usuarios Por Nombre o Apellidos Usuarios 				*/
-/*| Solicitud Proveniente de ajax.php 																*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-function Find_All_Usuario_Buscar($USUARIOS){
-	global $db;
-	$USUARIOS = remove_junk($db->escape($USUARIOS));
-	$sql = "SELECT Nombre, Apellido FROM usario WHERE Nombre like'%$USUARIOS%' and Apellido like'%USUARIOS%' ";
-	$result = find_by_sql($sql);
-     return $result;
-}
-
-
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Función Para Mostrar Mobiliario Reciente Agregado al Sistema 									*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-
-function find_recent_mobiliario_added($limit){ //Encontrar Mobiliario Recientemente Agregado
-	global $db;
-	$sql = "SELECT m.id, m.NombreMobiliario as NombreMobiliario,
-	 m.CodigoMobiliario , 
-	 a.NombreAula, 
-	 em.nombreEstadoMobiliario as nombreEstadoMobiliario , 
-	 m.imagenMobiliario as imagenMobiliario";
-	$sql .= " FROM mobiliarioaula as m ";
-	$sql .= " INNER JOIN aula as a ON a.id = m.id ";
-	$sql .= " INNER JOIN media as md ON md.id = m.imagenMobiliario ";
-	$sql .= " INNER JOIN estadomobiliario as em ON em.id = m.idNombreEstadoMobiliario ";
-	$sql .= " ORDER BY m.NombreMobiliario DESC LIMIT " .$db->escape((int)$limit);
-	return find_by_sql($sql);
-}
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
-/*| Funcion Para Encontrar el Mobiliario Mas Solicitado ó Prestado en la Institución 				*/
-/*|																									*/
-/*--------------------------------------------------------------------------------------------------*/
-
-function find_more_borrowed_furniture ($limite){ //Mobiliario Mas Prestado
-	global $sql;
-	$sql = "SELECT m.NombreMobiliario, COUNT(r.PrestamoMobiliario_idPrestamoMobiliario) As TotalPrestado";
-	$sql .= "FROM mobiliarioaula m";
-	$sql .= "INNER JOIN reporte r ON r.PrestamoMobiliario_idPrestamoMobiliario = m.id";
-	$sql .= "GROUP BY r.PrestamoMobiliario_idPrestamoMobiliario";
-	$sql .= "ORDER BY m.NombreMobiliario DESC LIMIT 1" .$db->escape((int)$limit);
-	return $db->query($sql);
-} 
-
-/*--------------------------------------------------------------------------------------------------*/
-/*|																									*/
 /*| Funcion Para Encontrar Todas las Aulas Registradas en el Sistema 								*/
 /*|																									*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -434,19 +282,6 @@ function find_all_aula(){
 	$sql .= " FROM aula as a";;
 	$sql .= " ORDER BY a.id ASC";
 	return find_by_sql($sql);
-  }
-
-
-
-
-function update_product_qty($EstadoAula,$p_id){
-    global $db;
-    $EstadoAula = (int) $EstadoAula;
-    $id  = (int)$p_id;
-    $sql = "UPDATE products SET quantity=quantity -'{$EstadoAula}' WHERE id = '{$id}'";
-    $result = $db->query($sql);
-    return($db->affected_rows() === 1 ? true : false);
-
   }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -476,6 +311,45 @@ function find_all_states(){//Encontrar Estados
 	$result = find_by_sql($sql);
 	return $result;
 }
+
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Función Para subir archivos csv en la Base de Datos SISTEMA-OIS 	csv							*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+function insertar_datos_usuario($Nombre,$Apellido,$idCargoUsuario,$idTipoDocumento, $NoDocumento,$CorreoElectronico){
+  global $db;
+$sql  = "INSERT INTO usuario(Nombre, Apellido,idCargoUsuario, idTipoDocumento, NoDocumento, CorreoElectronico) values ('$Nombre','$Apellido','$idCargoUsuario','$idTipoDocumento','$NoDocumento','$CorreoElectronico')";
+$ejecutar = $result = $db->query($sql);
+return $ejecutar;
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Función Para subir archivos csv en la Base de Datos SISTEMA-OIS 								*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+function insertar_datos_aula($NombreAula,$EstadoAula){
+  global $db;
+$sql  = "insert into aula (NombreAula, EstadoAula) values ('$NombreAula','$EstadoAula')";
+$ejecutar = $result = $db->query($sql);
+return $ejecutar;
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Función Para subir archivos csv en la Base de Datos SISTEMA-OIS 								*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+function insertar_datos_mobiliario($NombreMobiliario,$CodigoMobiliario,$idAula,$VidaUtilMobiliario,$VidaUtilMobiliarioFinal,$idNombreEstadoMobiliario){
+  global $db;
+  $sql = "insert into mobiliarioaula (NombreMobiliario, CodigoMobiliario, idAula, VidaUtilMobiliario, VidaUtilMobiliarioFinal, idNombreEstadoMobiliario) VALUES
+  ('$NombreMobiliario','$CodigoMobiliario','$idAula','$VidaUtilMobiliario','$VidaUtilMobiliarioFinal','$idNombreEstadoMobiliario')";
+  $ejecutar = $result = $db->query($sql);
+  return $ejecutar; 
+  }
+  
+
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 //PARTE EN LA QUE VAN LOS REPORTES PARA LLAMARLOS
@@ -679,4 +553,54 @@ function find_Estado_Prestamo(){
   return $db->query($sql);
  }
 
+
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Función Para la administracion del sistema ois							*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Función Para los 3 maximos usuarios en la administracion							*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+function find_by_Maxuser($limit){
+  global $db;
+  $sql  = "SELECT  u.id,u.Nombre,u.Apellido,cg.NombreCargo,u.UltimoLogin";
+   $sql .= " FROM usuario u";
+   $sql .= " INNER JOIN cargousuario cg ON cg.NivelVisibilidad=u.idCargoUsuario";
+   $sql .= " order by u.id DESC LIMIT ".$db->escape((int)$limit);
+   return $db->query($sql);
+}
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Función Para Mostrar Mobiliario Reciente Agregado al Sistema 									*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+
+function find_recent_mobiliario_added($limit){ //Encontrar Mobiliario Recientemente Agregado
+	global $db;
+	$sql = "SELECT m.id, m.NombreMobiliario,m.CodigoMobiliario , a.NombreAula, em.NombreEstadoMobiliario";
+	$sql .= " FROM mobiliarioaula as m ";
+	$sql .= " INNER JOIN aula as a ON a.id = m.id ";
+	$sql .= " INNER JOIN estadomobiliario as em ON em.id = m.idNombreEstadoMobiliario ";
+	$sql .= " ORDER BY m.id DESC LIMIT " .$db->escape((int)$limit);
+	return find_by_sql($sql);
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*|																									*/
+/*| Funcion Para Encontrar el Mobiliario Mas Solicitado ó Prestado en la Institución 				*/
+/*|																									*/
+/*--------------------------------------------------------------------------------------------------*/
+
+function find_recent_aula($limit){ //Encontrar Mobiliario Recientemente Agregado
+	global $db;
+	$sql = "SELECT NombreAula, EstadoAula";
+	$sql .= " FROM aula ";
+	$sql .= " ORDER BY id DESC LIMIT " .$db->escape((int)$limit);
+	return find_by_sql($sql);
+} 
 ?>

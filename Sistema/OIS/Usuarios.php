@@ -1,20 +1,16 @@
 <?php
-$page_title = 'Lista de Usuarios';
-require_once 'configuracion/Cargar.php';
-
+  $page_title = 'Lista de usuarios';
+  require_once('configuracion/Cargar.php');
 ?>
 
 <?php
-include "Paginacion/connect.php";
-include "Paginacion/paginadorUsuario.php";?>
-<?php // Registrar qué nivel de usuario tiene permiso para ver esta página
-page_require_level(1);
 
-// extraer todos los usuarios de la base de datos
-$all_users = find_all_user();
+ page_require_level(1);
+
+ $all_users = find_all_user();
 ?>
 
- <?php
+<?php
 if (isset($_POST["enviar"])) {
 //nos permite recepcionar una variable que si exista y que no sea null
 
@@ -54,170 +50,134 @@ if (isset($_POST["enviar"])) {
 }
 ?>
 
- <?php include_once 'Diseños/Encabezado.php';?>
-
 <?php
-if (isset($_POST['buscar'])) {
-    $busca = $_POST['buscar'];
-    require 'cn.php';
-    if ($busca != "") {
-        $consulta = "SELECT u.id,u.Nombre,u.Apellido,cg.NombreCargo,";
-        $consulta .= "u.Estado ";
-        $consulta .= "FROM Usuario u ";
-        $consulta .= "INNER JOIN cargousuario cg ";
-        $consulta .= "ON cg.NivelVisibilidad=u.idCargoUsuario ";
-        $consulta .= "WHERE u.Nombre LIKE '%" . $busca . "%' ";
-        $consulta .= "ORDER BY u.id ASC";
+if(isset($_POST['buscar'])){
+$busca=$_POST['buscar'];
+require 'ConexionBuscador.php';
+if($busca!=""){ 
+  $consulta = "SELECT u.id,u.Nombre,u.Apellido,cg.NombreCargo,";
+	$consulta .="u.Estado,u.UltimoLogin ";
+	$consulta .="FROM usuario u ";
+	$consulta .="INNER JOIN cargousuario cg ";
+  $consulta .="ON cg.NivelVisibilidad=u.idCargoUsuario ";
+  $consulta .="WHERE u.Nombre LIKE '%".$busca."%' ";
+  $consulta .="ORDER BY u.id ASC";
 
-        $all_users = $mysqli->query($consulta);
-    }}
+ 
+
+  $all_users= $mysqli->query($consulta);
+}}
 ?>
 
 
 <html>
- <body style="background: #E2E2E1;">
+<body>
+
+<?php include_once('Disenos/Encabezado.php'); ?>
+
 <div class="row">
    <div class="col-md-12">
      <?php echo display_msg($msg); ?>
    </div>
 </div>
 
-<div class="row" >
+
+  
+
+<div class="row">
   <div class="col-md-12">
-    <div class="panel panel-default" style="background: #FFF;">
-
-      <div class="panel-heading clearfix" style="background: #0174DF;">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix" style="background:#0588FC;">
         <strong>
-          <span class="glyphicon glyphicon-user" style="color: #FFF;"></span>
-          <span style="color: #FFF;">Usuarios</span>
+          <span class="glyphicon glyphicon-user" style="color:#FFF;"></span>
+          <span style="color:#FFF;">Usuarios</span>
        </strong>
-       <br>
-       <div class="pull-right">
-           <a href="plantillas/plantilla.xlsx" class="btn btn-primary"  style="margin-left: 10px" download="plantilla.xlsx">Manual de usuario</a>
-         </div>
-       <strong>
-         <a href="Agregar_Usuarios.php" class="btn btn-info pull-right" style="background: #FFF; color:#0174DF ">Agregar usuario</a>
-       </strong>
-       <br>
-       <h1 style="color: #FFF;" align="center">Subir Archivos</h1>
-   <div class="formulario">
-    <form action="Usuarios.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
-       <input type="file"  name="archivo" class="form-control"/>
-      <input type="submit"  value="SUBIR ARCHIVO"  class="form-control" name="enviar">
-    </form>
-    <h1 style="color: #FFF; font-size: 150%">Usuarios</h1>
-<form action="Usuarios.php" method="POST">
-  <label><input type="text"  name="buscar" placeholder="Usuarios"></label>
-<input type="submit" class="btn btn-info " name="enviando" value="Buscar" >
-</form>
-</br>
 
-   </div>
-</body>
-</html>
+        <!--Boton de Manual de usuario--->
+        <div class="pull-right">
+           <a href="plantillas/ManualUsuario.pdf" class="btn btn-primary"  style="margin-left: 3%" download="ManualUsuario.pdf">Manual de usuario
+                  <i  class="glyphicon glyphicon-download-alt"></i>
+           </a>
+        </div>
+
+        <!--Boton de agregar--->
+         <a href="AgregarUsuario.php"  style="margin-left: 1080px" class="btn btn-primary" >Agregar usuario</a>
+        <br>
+        
+      <!--Carga masiva--->
+      <h1 align="center" style="color: #FFF;">Subir Archivos</h1>
+      <div class="formulario">
+          <form action="Usuarios.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
+            <input type="file" name="archivo" class="form-control"/>
+            <input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar">
+          </form>
       </div>
 
-<div class="panel-body">
+    
+         <!--Buscador de Usuarios--->
+         <br>
+      <form action="Usuarios.php" method="POST">
+        <label><input type="text"  name="buscar" placeholder="Usuarios"></label>
+        <input type="submit" class="btn btn-primary " name="enviando" value="Buscar" >
+      </form>
+
+      </div>
+
+      <div class="panel-body">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th class="text-center" style="width: 50px;">#</th>
             <th>Nombre </th>
             <th>Apellido</th>
-            <th class="text-center" style="width: 15%;">Rol de usuario</th>
+            <th class="text-center" style="width: 15%;">Tipo de Cargo</th>
             <th class="text-center" style="width: 10%;">Estado</th>
+            <th class="text-center" style="width: 20%;">Último login</th>
             <th class="text-center" style="width: 100px;">Acciones</th>
           </tr>
         </thead>
 
-
-
-
-       <tbody>
-          <?php
-if ($totalregistros >= 1):
-    foreach ($registros as $reg):
-    ?>
-                              <tr>
-                             <td class="text-center"><?php echo count_id(); ?></td>
-                             <td><?php echo remove_junk(ucwords($reg['Nombre'])) ?></td>
-                             <td><?php echo remove_junk(ucwords($reg['Apellido'])) ?></td>
-                             <td class="text-center"><?php echo remove_junk(ucwords($reg['NombreCargo'])) ?></td>
-
-                             <td class="text-center">
-                             <?php if ($reg['Estado'] === '1'): ?>
-                              <span class="label label-success"><?php echo "Activo"; ?></span>
-                            <?php else: ?>
+        <tbody>
+        <?php foreach($all_users as $a_user): ?>
+            <tr>
+           <td class="text-center"><?php echo count_id();?></td>
+           <td><?php echo remove_junk(ucwords($a_user['Nombre']))?></td>
+           <td><?php echo remove_junk(ucwords($a_user['Apellido']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($a_user['NombreCargo']))?></td>
+           <td class="text-center">
+           <?php if($a_user['Estado'] === '1'): ?>
+            <span class="label label-success"><?php echo "Activo"; ?></span>
+          <?php else: ?>
             <span class="label label-danger"><?php echo "Inactivo"; ?></span>
           <?php endif;?>
-           </td>
-           <td class="text-center">
+          </td>
+
+          <td><?php echo read_date($a_user['UltimoLogin'])?></td>
+          <td class="text-center">
              <div class="btn-group">
-              <a href="Editar_Usuario.php?id=<?php echo (int) $reg['id']; ?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-            <i class="glyphicon glyphicon-pencil"></i>
+                <a href="EditarUsuario.php?id=<?php echo (int)$a_user['id'];?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                  <i class="glyphicon glyphicon-pencil"></i>
                </a>
-            <a href="Eliminar_Usuario.php?id=<?php echo (int) $reg['id']; ?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-              <i class="glyphicon glyphicon-remove"></i>
+                <a href="EliminarUsuario.php?id=<?php echo (int)$a_user['id'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                  <i class="glyphicon glyphicon-remove"></i>
                 </a>
                 </div>
            </td>
-          </tr>
-        <?php endforeach;
-else:
-?>
-        <tr>
-           <td colspan="7">No hay registros</td>
-        </tr>
-      <?php endif;?>
+           </tr>
+        <?php endforeach;?>
        </tbody>
      </table>
      </div>
     </div>
   </div>
-  <div class="pull-left">
-   <a href="plantillas/ManualTecnico.pdf" class="btn btn-primary" download="plantilla.xlsx">Descargar plantilla</a>
 </div>
+
+<div class="pull-left">       
+   <a href="plantillas/plantilla.xlsx" class="btn btn-primary" download="plantilla.xlsx">Descargar plantilla
+          <i  class="glyphicon glyphicon-download-alt"></i>
+   </a>
 </div>
-<?php if ($totalregistros >= 1): ?>
-<nav aira-label="Page navigation" class="text-center">
-  <ul class="pagination" >
-    <?php if ($pagina == 1): ?>
-    <li class="disabled">
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <?php else: ?>
-      <li >
-      <a href="Usuarios.php?pagina=<?php echo $pagina - 1; ?>" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-  <?php endif;
-for ($i = 1; $i <= $numeropaginas; $i++) {
-    if ($pagina == $i) {
-        echo '<li class="active"><a href="Usuarios.php?pagina=' . $i . '">' . $i . '</a></li>';
-    } else {
-        echo '<li><a href="Usuarios.php?pagina=' . $i . '">' . $i . '</a></li>';
-    }
-}
-if ($pagina == $numeropaginas):
-?>
-    <li class="disabled">
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-    <?php else: ?>
-      <li>
-      <a href="Usuarios.php?pagina=<?php echo $pagina + 1; ?>" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-    <?php endif;?>
-  </ul>
-</nav>
-<?php endif;?>
+
+  <?php include_once('Disenos/Pie_de_Pagina.php'); ?>
 </body>
 </html>
-<?php include_once 'Diseños/Pie_De_Pagina.php'?>

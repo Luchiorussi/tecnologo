@@ -14,8 +14,8 @@ m.VidaUtilMobiliario As 'Vida Util Inicial',
 m.VidaUtilMobiliarioFinal As 'Vida Util Final',
 em.NombreEstadoMobiliario As 'Estado Mobiliario'
 FROM mobiliarioaula As m
-INNER JOIN Aula AS a ON a.id = m.idAula 
-INNER JOIN EstadoMobiliario em ON em.id = m.idNombreEstadoMobiliario
+INNER JOIN aula AS a ON a.id = m.idAula 
+INNER JOIN estadomobiliario em ON em.id = m.idNombreEstadoMobiliario
 WHERE m.NombreMobiliario LIKE '$vbusqueda%' OR
 m.NombreMobiliario LIKE '$vbusqueda%' OR
 m.CodigoMobiliario LIKE '$vbusqueda%' OR 

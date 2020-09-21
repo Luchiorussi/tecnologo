@@ -1,19 +1,10 @@
 <?php
 $page_title = 'Añadir Mobiliario';
   require_once('configuracion/Cargar.php');
-  // Compruebe en qué nivel el usuario tiene permiso para ver esta página.
-page_require_level(2);
-
-
-
-// Foraneas
-
+  page_require_level(2);
   $all_states = find_all('estadomobiliario');
   $all_aula = find_all('aula');
-
-
 ?>
-
 
 <?php
 if(isset($_POST['Agregar_producto'])){
@@ -61,8 +52,7 @@ if(isset($_POST['Agregar_producto'])){
 ?>
 
 
-
-<?php include_once('Diseños/Encabezado.php'); ?>
+<?php include_once('Disenos/Encabezado.php'); ?>
 <div class="row">
   <div class="col-md-12">
     <?php echo display_msg($msg); ?>
@@ -71,10 +61,11 @@ if(isset($_POST['Agregar_producto'])){
   <div class="row">
   <div class="col-md-9">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background:#0588FC;">
+      
           <strong>
-            <span class="glyphicon glyphicon-th"></span>
-            <span>Agregar Mobiliario a la Institucion</span>
+            <span class="glyphicon glyphicon-tasks"  style="color: #FFF;" ></span>
+            <span  style="color: #FFF;" >Agregar Mobiliario a la Institucion</span>
          </strong>
 </div>
         
@@ -136,14 +127,15 @@ if(isset($_POST['Agregar_producto'])){
                 </select>
               </div>
 
-
               <div>  
-              <button type="submit" name="Agregar_producto" class="btn btn-danger" style="font-size: 18px;">Añadir Mobiliario</button>
+              <button type="submit" name="Agregar_producto"   style="margin-left: 10px" class="btn btn-primary" >Añadir Mobiliario</button>
+              
+               <a href="Producto.php" class="btn btn-danger"  style="margin-left: 10px">Regresar</a>  
               </div>
               <br>
-               <div> 
-              <a href="Producto.php" class="btn btn-primary" style="font-size: 18px;">Regresar</a>        
-              </div>
+               
+                   
+              
             </form>
          </div>
         </div>
@@ -151,4 +143,4 @@ if(isset($_POST['Agregar_producto'])){
     </div>
   
   </div>
- <?php include_once('Diseños/Pie_De_Pagina.php'); ?>
+ <?php include_once('Disenos/Pie_de_Pagina.php'); ?>

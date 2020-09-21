@@ -1,10 +1,10 @@
 <?php
 $page_title = 'Añadir Mobiliario';
-  require_once('Configuracion/Cargar.php');
+  require_once('configuracion/Cargar.php');
 
-  // Compruebe en qué nivel el usuario tiene permiso para ver esta página
+  
 page_require_level(2);
-// Foreaneas
+
   $e_user = find_by_id('mobiliarioaula',(int)$_GET['id']);
  
   $all_states = find_all('estadomobiliario');
@@ -13,7 +13,7 @@ page_require_level(2);
 ?>
 <?php
 
-if(isset($_POST['e_user'])){ // <--- Editar 
+if(isset($_POST['e_user'])){ 
    $req_fields = array('NombreMobiliario','CodigoMobiliario','idAula','VidaUtilMobiliario','VidaUtilMobiliarioFinal','idNombreEstadoMobiliario');
    validate_fields($req_fields);
 
@@ -26,13 +26,13 @@ if(isset($_POST['e_user'])){ // <--- Editar
  $idNombreEstadoMobiliario= (int)($db->escape($_POST['idNombreEstadoMobiliario']));
 
 
-// Modificar
+
 
  $query   = "UPDATE mobiliarioaula SET";
        $query  .=" NombreMobiliario ='{$NombreMobiliario}', CodigoMobiliario ='{$CodigoMobiliario}', idAula = '{$idAula}',";
-       //
+   
        $query  .=" VidaUtilMobiliario ='{$VidaUtilMobiliario}', VidaUtilMobiliarioFinal ='{$VidaUtilMobiliarioFinal}', idNombreEstadoMobiliario ='{$idNombreEstadoMobiliario}'";
-      //Condicion
+
        $query  .=" WHERE id ='{$e_user ['id']}'";
        
 
@@ -54,10 +54,9 @@ if(isset($_POST['e_user'])){ // <--- Editar
 
  }
 
-// Formularios de editar mobiliario
 
 ?>
-<?php include_once('Diseños/Encabezado.php') ?>
+<?php include_once('Disenos/Encabezado.php') ?>
 
 <div class="row">
    <div class="col-md-12"> <?php echo display_msg($msg); ?> </div>
@@ -65,7 +64,7 @@ if(isset($_POST['e_user'])){ // <--- Editar
      <div class="panel panel-default">
        <div class="panel-heading">
         <strong>
-          <span class="glyphicon glyphicon-tasks"></span>
+          <span class="glyphicon glyphicon-th"></span>
           Actualiza el mobiliario <?php echo remove_junk(ucwords($e_user['NombreMobiliario'])); ?>
         </strong>
         </div>
@@ -74,7 +73,7 @@ if(isset($_POST['e_user'])){ // <--- Editar
 
 
 
-        <div class="panel-body">
+            <div class="panel-body">
           <form method="post" action="Editar_producto.php?id=<?php echo (int)$e_user['id'];?>" class="clearfix">
             <div class="form-group">
                   <label for="NombreMobiliario" class="control-label">Nombre del mobiliario</label>
@@ -87,31 +86,35 @@ if(isset($_POST['e_user'])){ // <--- Editar
 
            <div class="form-group">
                   <label for="CodigoMobiliario" class="control-label"> Codigo del mobiliario</label>
-                  <input type="text" class="form-control" max="5" name="CodigoMobiliario" value="<?php echo remove_junk($e_user['CodigoMobiliario']); ?>">
+                  <input type="text" class="form-control" name="CodigoMobiliario" value="<?php echo remove_junk($e_user['CodigoMobiliario']); ?>">
             </div>
 
 
 
+
+   
              <div class="form-group">
-              <label for="idAula">Aula del Mobiliario</label>
-                    <select class="form-control" name="idAula">
-                      <?php  foreach ($all_aula as $all_aul): ?>
-                        <option value="<?php echo (int)$all_aul['id'];?>" <?php if($e_user['idAula'] === $all_aul['id']): echo "selected"; endif; ?> >
-                          <?php echo $all_aul['NombreAula'] ?></option>
-                      <?php endforeach; ?>
-                    </select>
-            </div>
+              <label for="idAula">Aula del mobiliario</label>
+                <select class="form-control" name="idAula">
+                  <?php foreach ($all_aula as $all_aul):?>
+                   <option <?php if($all_aul['id'] === $e_user['idAula']) 
+                   echo 'selected="selected"';?> value="<?php echo $all_aul['id'];?>"><?php echo ucwords($all_aul['NombreAula']);?></option>
+                 <?php endforeach;?>
+                 </select>
+             </div>
+
+
 
 
            <div class="form-group">
-                  <label for="VidaUtilMobiliario" class="control-label"> Vida inicial de mobliiario (Fecha : YYYY-DD-MM) </label>
-                  <input type="text"class="datepicker form-control" name="VidaUtilMobiliario" value="<?php echo remove_junk($e_user['VidaUtilMobiliario']); ?>">
+                  <label for="VidaUtilMobiliario" class="control-label"> Vida inical de mobiliario (Fecha : YYYY-DD-MM) </label>
+                  <input type="date" class="form-control" name="VidaUtilMobiliario" value="<?php echo remove_junk($e_user['VidaUtilMobiliario']); ?>">
             </div>
 
 
               <div class="form-group">
                   <label for="VidaUtilMobiliarioFinal" class="control-label"> Vida final de mobliiario (Fecha : YYYY-DD-MM) </label>
-                  <input type="text" class="datepicker form-control" name="VidaUtilMobiliarioFinal" value="<?php echo remove_junk($e_user['VidaUtilMobiliarioFinal']); ?>">
+                  <input type="date" class="form-control" name="VidaUtilMobiliarioFinal" value="<?php echo remove_junk($e_user['VidaUtilMobiliarioFinal']); ?>">
             </div>
 
 
@@ -147,5 +150,4 @@ if(isset($_POST['e_user'])){ // <--- Editar
       </div>
   </div>
 
-<?php include_once('Diseños/Pie_De_Pagina.php'); ?>
-
+<?php include_once('Disenos/Pie_de_Pagina.php'); ?>

@@ -10,7 +10,7 @@ $query = "
 			 a.NombreAula As 'Nombre del Aula',  em.NombreEstadoMobiliario As 'Estado Mobiliario'
 	FROM mobiliarioaula As m
 	INNER JOIN aula as a on a.id = m.idAula
-	INNER JOIN EstadoMobiliario as em On em.id = m.idNombreEstadoMobiliario
+	INNER JOIN estadomobiliario as em On em.id = m.idNombreEstadoMobiliario
 	WHERE
 	m.NombreMobiliario LIKE '%$vbusqueda%' OR
 	m.CodigoMobiliario LIKE '%$vbusqueda%' OR

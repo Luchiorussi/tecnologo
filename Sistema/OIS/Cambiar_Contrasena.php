@@ -2,7 +2,7 @@
 	$page_titte = 'Cambiar contraseña';
 	require_once('configuracion/Cargar.php');
  // Compruebe en qué nivel el usuario tiene permiso para ver esta página
-  page_require_level(4);
+  page_require_level(5);
  ?>
 
  <?php $user = current_user(); ?>
@@ -38,7 +38,7 @@
   }
 ?>
 
-<?php include_once('diseños/Encabezado.php') ?>
+<?php include_once('Disenos/Encabezado.php') ?>
 
 <div class="login-page">
     <div class="text-center">
@@ -61,5 +61,5 @@
     </form>
 </div>
 
-<?php include_once('Diseños/Pie_De_Pagina.php'); ?>
+<?php include_once('Disenos/Pie_de_Pagina.php'); ?>
 

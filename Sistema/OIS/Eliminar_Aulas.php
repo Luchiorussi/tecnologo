@@ -1,7 +1,7 @@
 <?php
   require_once('configuracion/Cargar.php');
   // Checkin What level user has permission to view this page
-  page_require_level(1);
+  page_require_level(2);
 ?>
 <?php
   $aula = find_by_id('aula',(int)$_GET['id']);
