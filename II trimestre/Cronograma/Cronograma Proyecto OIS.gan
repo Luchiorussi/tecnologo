@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2020-09-21" view-index="0" gantt-divider-location="424" resource-divider-location="300" version="2.8.11" locale="es">
+    <description/>
+    <view zooming-state="default:3" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="201" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="114" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="105" order="2"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Projecto OIS" color="#8cb6ce" meeting="false" start="2019-02-04" duration="445" complete="97" thirdDate="2020-10-09" thirdDate-constraint="0" expand="true">
+            <task id="3" name="Trimestre I" color="#8cb6ce" meeting="false" start="2019-02-04" duration="41" complete="99" thirdDate="2020-10-09" thirdDate-constraint="0" expand="false">
+                <task id="20" name="Documentacion Inicial" color="#8cb6ce" meeting="false" start="2019-02-04" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Objetivos Generales, Objetivos espesificos, Planteamiento de problema, Alcance del proyecto y Justificación]]></notes>
+                </task>
+                <task id="26" name="Levantamiento de informacion" color="#8cb6ce" meeting="false" start="2019-02-11" duration="15" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Realización del levantamiento de información(Calidad de preguntas)]]></notes>
+                </task>
+                <task id="25" name="BPNM" color="#8cb6ce" meeting="false" start="2019-02-18" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Realización de diagrama BPMN del negocio actual al que se le realizara el sistema y no el que se implementara con el mismo]]></notes>
+                </task>
+                <task id="24" name="Requerimientos funcionales y no funcionales" color="#8cb6ce" meeting="false" start="2019-02-18" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Realización de los requerimientos funcionales y no funcionales bajo un estándar ]]></notes>
+                </task>
+                <task id="23" name="Casos de uso" color="#8cb6ce" meeting="false" start="2019-02-25" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Diagrama de casos de uso del proyecto]]></notes>
+                </task>
+                <task id="22" name="Casos de uso extendido" color="#8cb6ce" meeting="false" start="2019-03-01" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Realización de casos de uso extendido ya sea en formato estandar o visual paradigm]]></notes>
+                </task>
+                <task id="21" name="Sistema de control de versiones" color="#8cb6ce" meeting="false" start="2019-04-01" duration="1" complete="10" thirdDate="2020-10-09" thirdDate-constraint="0" priority="4" expand="true">
+                    <notes><![CDATA[Manejo y control de versiones del proyecto mediante la herramienta git]]></notes>
+                </task>
+            </task>
+            <task id="4" name="Trimestre II" color="#8cb6ce" meeting="false" start="2019-02-04" duration="48" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" expand="false">
+                <task id="36" name="MER" color="#8cb6ce" meeting="false" start="2019-02-18" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="4" expand="true">
+                    <notes><![CDATA[Modelo entidad relación(MER) Crow's foot]]></notes>
+                </task>
+                <task id="42" name="Diccionario de datos" color="#8cb6ce" meeting="false" start="2019-02-20" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Dicionario de datos co la descripción de los campos]]></notes>
+                </task>
+                <task id="41" name="Cronograma" color="#8cb6ce" meeting="false" start="2019-02-04" duration="40" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Cronograma, presupuestos y selecion de personal(realizado en diagrama de gantt lo mas sercano a la realidad]]></notes>
+                </task>
+                <task id="40" name="Diagrama de distribución" color="#8cb6ce" meeting="false" start="2019-02-11" duration="15" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Realización de diagrama distribucion bajo estándar UML 2.4.1 o superior]]></notes>
+                </task>
+                <task id="39" name="Diagrama de clases" color="#8cb6ce" meeting="false" start="2019-03-01" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Diagrama de clases que evidencie clases y relaciones bajo estándar UML 2.4.1 o superior]]></notes>
+                </task>
+                <task id="38" name="Mockups" color="#8cb6ce" meeting="false" start="2019-02-18" duration="25" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Evidencia de un prototipo en Mockups, wireframes o html]]></notes>
+                </task>
+                <task id="37" name="Normalización del MER" color="#8cb6ce" meeting="false" start="2019-03-14" duration="20" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Evidencia de la forma normal en la que se encuentran las entidades del modelo entidad relación(MER)]]></notes>
+                </task>
+            </task>
+            <task id="5" name="Trimestre III" color="#8cb6ce" meeting="false" start="2019-04-08" duration="78" complete="99" thirdDate="2020-10-09" thirdDate-constraint="0" expand="false">
+                <task id="45" name="inventario que tiene el cliente para implementar el sistema" color="#8cb6ce" meeting="false" start="2019-04-08" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Evidencia del inventario con el que cuenta el cliente para la implementación del sistema de información]]></notes>
+                </task>
+                <task id="50" name="Sistema de integración continua" color="#8cb6ce" meeting="false" start="2019-05-03" duration="1" complete="0" thirdDate="2020-10-01" thirdDate-constraint="0" priority="3" expand="true">
+                    <notes><![CDATA[Evidencia de sistema de integracion continual(Opcional)]]></notes>
+                </task>
+                <task id="49" name="Construcción de base de datos" color="#8cb6ce" meeting="false" start="2019-04-15" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Construción de base de datos y sus respectivas sentencias]]></notes>
+                </task>
+                <task id="48" name="Base de datos" color="#8cb6ce" meeting="false" start="2019-04-25" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="4" expand="true">
+                    <notes><![CDATA[Evidencia del uso de la base de datos]]></notes>
+                </task>
+                <task id="47" name="Prototipo no funcional" color="#8cb6ce" meeting="false" start="2019-05-27" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Evidencia de un prototipo no funcional por medio de mockups o wireframe]]></notes>
+                </task>
+                <task id="46" name="Costos" color="#8cb6ce" meeting="false" start="2019-06-20" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Informe de costos de hardware y software necesarios para la realizacion del proyecto]]></notes>
+                </task>
+            </task>
+            <task id="11" name="Trimestre IV" color="#8cb6ce" meeting="false" start="2019-07-22" duration="62" complete="100" thirdDate="2020-10-09" thirdDate-constraint="0" expand="false">
+                <task id="76" name="Manueal técnico" color="#8cb6ce" meeting="false" start="2019-07-22" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Elaboración de maueal técnico]]></notes>
+                </task>
+                <task id="81" name="Realización de pruebas" color="#8cb6ce" meeting="false" start="2019-08-12" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Realizacion de prubas utilizando diversas tecnivas como por ejemplo(Pruebas unitarias, Pruebas caja blanca, Pruebas caja negra, Pruebas funcionales, Pruebas de humo, Pruebas de regrecion, Pruebas del sistema, Pruebas stress, Pruebas de desempeño, Pruebas integridad, etc)]]></notes>
+                </task>
+                <task id="80" name="Manual de instalación" color="#8cb6ce" meeting="false" start="2019-09-09" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Realización del manual de instalacion del aplicativo]]></notes>
+                </task>
+                <task id="79" name="Diagramas de distribución" color="#8cb6ce" meeting="false" start="2019-09-02" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Realizacion de diagramas de distribucón minimamente del software debido a que el hardware puede llegar a ser demasiado caro o no poderse conseguir por los aprendces]]></notes>
+                </task>
+                <task id="82" name="Migración de datos" color="#8cb6ce" meeting="false" start="2019-09-09" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="4" expand="true">
+                    <notes><![CDATA[Evidencia del informe de migración de datos]]></notes>
+                </task>
+                <task id="77" name="Planes del sistema" color="#8cb6ce" meeting="false" start="2019-09-18" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Evidencia del plan de instalacion, plan de respaldo y plan de migración]]></notes>
+                </task>
+            </task>
+            <task id="6" name="Trimestre V" color="#8cb6ce" meeting="false" start="2019-10-14" duration="48" complete="98" thirdDate="2020-10-09" thirdDate-constraint="0" expand="false">
+                <task id="93" name="Cuadro comparativo" color="#8cb6ce" meeting="false" start="2019-11-15" duration="1" complete="0" thirdDate="2020-10-01" thirdDate-constraint="0" priority="3" expand="true">
+                    <notes><![CDATA[Cuadro comparativo de los proveedores deonde se adquieran el software y hardware necesario para el sistema de informacio(Cuadro comparatibo opcional)]]></notes>
+                </task>
+                <task id="95" name="Contratos de desarrollo" color="#8cb6ce" meeting="false" start="2019-10-14" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Evidencia de los contratos de desarrollo del software]]></notes>
+                </task>
+                <task id="94" name="Documentacion de pruebas" color="#8cb6ce" meeting="false" start="2019-11-14" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="4" expand="true">
+                    <notes><![CDATA[Realización de la documentación de prubas]]></notes>
+                </task>
+            </task>
+            <task id="7" name="Trimestre VI" color="#8cb6ce" meeting="false" start="2020-08-10" duration="50" complete="90" thirdDate="2020-10-09" thirdDate-constraint="0" expand="true">
+                <task id="97" name="Modelo de calidad" color="#8cb6ce" meeting="false" start="2020-09-03" duration="25" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Aplicación de algun modelo de calidad]]></notes>
+                </task>
+                <task id="98" name="Porcentaje de completado del proyecto" color="#8cb6ce" meeting="false" start="2020-09-21" duration="20" complete="70" thirdDate="2020-10-01" thirdDate-constraint="0" priority="4" expand="true">
+                    <notes><![CDATA[Proyecto completado al 100% o el porcentaje de que tan completo este en base al alcanze y la estimacion con los casos de uso]]></notes>
+                </task>
+                <task id="99" name="Manuales de usuario y operación" color="#8cb6ce" meeting="false" start="2020-08-10" duration="20" complete="100" thirdDate="2020-10-01" thirdDate-constraint="0" priority="2" expand="true">
+                    <notes><![CDATA[Evidencia de la realización de manuales de usuario y operación]]></notes>
+                </task>
+            </task>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="Gamba Russi Luis Felipe" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="1" name="Gutierrez Pintor Arley Sebastian" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="2" name="Ramirez Molina Luis Gabriel" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="3" name="Serrano Amaya Diego Alejandro" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="4" name="Quiroga Osorio Andres Felipe" function="SoftwareDevelopment:2" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="20" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="26" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="36" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="42" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="41" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="39" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="37" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="49" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="45" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="81" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="80" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="82" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="95" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="94" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="97" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="99" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="98" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="22" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="48" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="49" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="76" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="81" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="79" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="77" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="95" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="94" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="97" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="99" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="98" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="26" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="25" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="42" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="36" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="41" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="39" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="37" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="46" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="49" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="81" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="80" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="82" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="95" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="94" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="97" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="99" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="98" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="26" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="24" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="23" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="42" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="36" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="40" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="39" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="37" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="47" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="49" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="45" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="76" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="81" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="79" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="82" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="77" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="95" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="94" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="97" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="99" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="98" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="26" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="21" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="36" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="40" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="39" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="38" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="37" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="47" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="48" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="49" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="45" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="81" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="80" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="95" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="94" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="98" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
